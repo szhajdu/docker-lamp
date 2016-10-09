@@ -1,4 +1,33 @@
-# Configure DNS forwarding to dev domain
+# Docker LAMP
+
+## Features
+
+* Apache/2.4.10 (Debian) 
+* PHP 5.6.26
+* MySQL (in progress)
+* phpMyAdmin (in progress)
+
+## Usage
+
+### Build
+
+```bash
+$ docker-compose build
+```
+
+### Start
+
+```bash
+$ docker-compose up -d
+```
+
+### Stop
+
+```bash
+$ docker-compose stop
+```
+
+## Configure DNS forwarding to dev domain
 
 Install dnsmasq
 
@@ -18,34 +47,22 @@ Start it and ensure it auto-starts on reboot in the future
 $ sudo brew services start dnsmasq
 ```
 
-Setup dns resovler
+Setup dns resolver
 
 ```bash
 $ sudo mkdir -p /etc/resolver
 $ sudo bash -c 'echo "nameserver 127.0.0.1" > /etc/resolver/devel.com'
 ```
 
-# Docker FAQ
-
-## Build
+Test your dev environment
 
 ```bash
-$ docker-compose build
+$ ping test.devel.com
 ```
 
-## Start
+## Docker FAQ
 
-```bash
-$ docker-compose up -d
-```
-
-## Stop
-
-```bash
-$ docker-compose stop
-```
-
-## How to get bash into a running container in background mode?
+### How to get bash into a running container in background mode?
 
 ```bash
 $ docker exec -it [CONTAINER_ID] /bin/bash -c "export TERM=xterm; exec bash"
