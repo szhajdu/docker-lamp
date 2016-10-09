@@ -4,8 +4,8 @@
 
 * Apache/2.4.10 (Debian) 
 * PHP 5.6.26
-* MySQL (in progress)
-* phpMyAdmin (in progress)
+* MySQL 5.7
+* phpMyAdmin
 
 ## Usage
 
