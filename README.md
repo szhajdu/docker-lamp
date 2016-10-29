@@ -15,16 +15,45 @@
 $ docker-compose build
 ```
 
+or
+
+```bash
+$ make build
+```
+
 ### Start
 
 ```bash
 $ docker-compose up -d
+```
+or
+
+```bash
+$ make up
 ```
 
 ### Stop
 
 ```bash
 $ docker-compose stop
+```
+
+or 
+
+```bash
+$ make stop
+```
+
+### Down
+
+```bash
+$ docker-compose down
+```
+
+or 
+
+```bash
+$ make down
 ```
 
 ## Configure DNS forwarding to dev domain on Host machine
@@ -66,4 +95,10 @@ $ ping test.devel.com
 
 ```bash
 $ docker exec -it [CONTAINER_ID] /bin/bash -c "export TERM=xterm; exec bash"
+```
+
+or 
+
+```bash
+$ make shell ID=[CONTAINER_ID]
 ```
