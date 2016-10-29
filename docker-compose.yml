@@ -8,21 +8,33 @@ services:
       - mysql:db
     volumes:
       - ./web:/var/www/test/web
+    networks:
+      - appnet
 
   mysql:
-      image: mysql:5.7
-      ports:
-        - "3306:3306"
-      environment:
-        MYSQL_DATABASE: test
-        MYSQL_ROOT_PASSWORD: password
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: test
+      MYSQL_USER: szhajdu
+      MYSQL_PASSWORD: password
+    volumes:
+      - ./cache:/var/lib/mysql
+    networks:
+      - appnet
 
   phpmyadmin:
-      image: phpmyadmin/phpmyadmin
-      links:
-          - mysql:db
-      ports:
-        - "8080:80"
-      environment:
-        PMA_USER: root
-        PMA_PASSWORD: password
+    image: phpmyadmin/phpmyadmin
+    links:
+      - mysql:db
+    ports:
+      - "8080:80"
+    environment:
+      PMA_USER: root
+      PMA_PASSWORD: password
+    networks:
+      - appnet
+
+networks:
+  appnet:
+    driver: "bridge"

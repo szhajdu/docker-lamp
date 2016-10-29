@@ -27,7 +27,7 @@ $ docker-compose up -d
 $ docker-compose stop
 ```
 
-## Configure DNS forwarding to dev domain
+## Configure DNS forwarding to dev domain on Host machine
 
 Install dnsmasq
 
