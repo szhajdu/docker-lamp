@@ -1,4 +1,6 @@
-# Docker LAMP
+# Docker PHP Application Skeleton
+
+Use this skeleton to build PHP development environment with Docker.
 
 ## Features
 
@@ -56,6 +58,18 @@ or
 $ make down
 ```
 
+### Bash into a running container in background mode
+
+```bash
+$ docker exec -it [CONTAINER_ID] /bin/bash -c "export TERM=xterm; exec bash"
+```
+
+or 
+
+```bash
+$ make shell ID=[CONTAINER_ID]
+```
+
 ## Configure DNS forwarding to dev domain on Host machine
 
 Install dnsmasq
@@ -87,18 +101,4 @@ Test your dev environment
 
 ```bash
 $ ping test.devel.com
-```
-
-## Docker FAQ
-
-### How to get bash into a running container in background mode?
-
-```bash
-$ docker exec -it [CONTAINER_ID] /bin/bash -c "export TERM=xterm; exec bash"
-```
-
-or 
-
-```bash
-$ make shell ID=[CONTAINER_ID]
 ```
