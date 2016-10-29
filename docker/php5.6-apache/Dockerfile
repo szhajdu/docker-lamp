@@ -4,9 +4,13 @@ MAINTAINER Szabolcs Hajdu <sabee0418@gmail.com>
 
 
 # install the PHP extensions we need.
-RUN apt-get update && apt-get install -y nano libpng12-dev libjpeg-dev && rm -rf /var/lib/apt/lists/* \
+RUN apt-get update && apt-get install -y nano libpng12-dev libjpeg-dev \
 	&& docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
-	&& docker-php-ext-install gd pdo pdo_mysql
+	&& docker-php-ext-install gd pdo pdo_mysql \
+
+	&& apt-get remove -y --purge software-properties-common \
+	&& apt-get clean \
+	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY config/php.ini /usr/local/etc/php/
 
